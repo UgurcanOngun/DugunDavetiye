@@ -30,6 +30,9 @@
   --kenar: 1px solid rgba(255, 252, 246, 0.62);
   --kart-kenar: 1px solid rgba(36, 121, 132, 0.18);
   --golge: 0 22px 55px rgba(18, 63, 72, 0.18);
+  --img-deniz: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80");
+  --img-dugun: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80");
+  --img-bohem: url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80");
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,10 +47,11 @@ body {
   background-color: var(--su);
   background-image:
     linear-gradient(180deg, rgba(215, 238, 240, 0.88) 0%, rgba(248, 242, 229, 0.92) 42%, rgba(232, 214, 183, 0.94) 100%),
-    url("assets/sahil-otel-arka-plan.jpg"); /* GORSEL: denize sifir otel/sahil fotografi */
+    var(--img-deniz); /* Internet gorseli: deniz/sahil atmosferi */
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
+  max-width: 100%;
 }
 
 body::before {
@@ -68,14 +72,15 @@ body.kilitli { overflow: hidden; height: 100vh; }
 
 .bolum {
   min-height: 100vh;
-  padding: 76px 22px;
+  width: 100%;
+  padding: 76px clamp(18px, 5vw, 28px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   isolation: isolate;
 }
 
@@ -170,7 +175,7 @@ body.kilitli { overflow: hidden; height: 100vh; }
   padding: 20px;
   background:
     linear-gradient(180deg, rgba(215,238,240,0.76), rgba(255,249,239,0.86) 52%, rgba(232,214,183,0.9)),
-    url("assets/sahil-zarf-arkaplan.jpg"),
+    var(--img-deniz),
     linear-gradient(160deg, var(--su), var(--kum)); /* GORSEL: acilis icin deniz/sahil fotografi */
   background-size: cover;
   background-position: center;
@@ -192,6 +197,7 @@ body.kilitli { overflow: hidden; height: 100vh; }
 .kose-cicek.sag-alt { bottom: -8px; right: -8px; transform: rotate(180deg); }
 .zarf-isim { font-size: clamp(2.8rem, 13vw, 4.9rem); color: var(--gece-deniz); text-shadow: 0 2px 0 rgba(255,252,246,0.72); }
 .zarf-ipucu { font-size: 1.08rem; color: var(--metin); opacity: 0.92; }
+.zarf-alt-not { font-size: 0.86rem; letter-spacing: 2px; text-transform: uppercase; color: var(--zeytin); margin-top: -14px; }
 .zarf-ok { font-size: 2rem; color: var(--deniz); animation: zipla 1.6s ease-in-out infinite; }
 @keyframes zipla { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(8px);} }
 
@@ -210,8 +216,69 @@ body.kilitli { overflow: hidden; height: 100vh; }
 .zarf.acik .muhur { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
 .zarf.acik .zarf-mektup { transform: translateY(-46%) scale(1.04); z-index: 7; box-shadow: 0 -10px 24px rgba(18,63,72,0.18); }
 
+/* Internet gorselli kartlar */
+.kapak-foto,
+.program-gorsel,
+.not-gorsel,
+.foto-paylasim-gorsel,
+.sahil-foto {
+  width: min(100%, 430px);
+  background-size: cover;
+  background-position: center;
+  border: 8px solid rgba(255,252,246,0.82);
+  box-shadow: var(--golge);
+}
+.kapak-foto {
+  aspect-ratio: 4 / 3;
+  border-radius: 28px 28px 10px 10px;
+  margin: 0 auto 18px;
+  background-image: linear-gradient(180deg, rgba(36,121,132,0.02), rgba(18,63,72,0.12)), var(--img-dugun);
+}
+.sahil-foto-karti {
+  width: min(100%, 430px);
+  background: rgba(255,252,246,0.72);
+  border: var(--kart-kenar);
+  border-radius: 18px;
+  padding: 12px 12px 18px;
+  box-shadow: var(--golge);
+}
+.sahil-foto {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-width: 0;
+  border-radius: 14px;
+  background-image: linear-gradient(180deg, rgba(255,252,246,0.05), rgba(18,63,72,0.12)), var(--img-bohem);
+}
+.sahil-foto-karti p {
+  color: var(--gece-deniz);
+  font-size: 1.05rem;
+  margin-top: 12px;
+  line-height: 1.45;
+}
+.program-gorsel {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  margin: 4px auto 22px;
+  background-image: linear-gradient(180deg, rgba(255,252,246,0.03), rgba(18,63,72,0.16)), var(--img-bohem);
+}
+.not-gorsel {
+  aspect-ratio: 16 / 10;
+  border-radius: 22px;
+  margin: 0 auto 18px;
+  background-image: linear-gradient(180deg, rgba(255,252,246,0.1), rgba(18,63,72,0.12)), var(--img-deniz);
+}
+.foto-paylasim-gorsel {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-width: 0;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background-image: linear-gradient(180deg, rgba(255,252,246,0.08), rgba(18,63,72,0.14)), var(--img-dugun);
+}
+
 /* 2) Kapak */
 .kapak { gap: 8px; }
+.kose-sus-cerceve { width: min(100%, 460px); margin-inline: auto; }
 .kapak-ust { font-size: 0.92rem; letter-spacing: 3px; text-transform: uppercase; color: var(--zeytin); margin-bottom: 8px; }
 .kapak-baslik { font-family: var(--font-baslik); font-weight: 700; font-size: clamp(2.15rem, 10vw, 4rem); letter-spacing: clamp(4px, 1.8vw, 12px); color: var(--gece-deniz); margin-bottom: 24px; }
 .kapak-kagit { background: linear-gradient(180deg, rgba(255,252,246,0.98), rgba(242,230,212,0.98)); color: var(--metin); padding: 44px 32px; border-radius: 10px; max-width: 430px; width: 100%; box-shadow: var(--golge); border: var(--kart-kenar); position: relative; overflow: hidden; }
@@ -225,7 +292,7 @@ body.kilitli { overflow: hidden; height: 100vh; }
 .karsilama { gap: 34px; }
 .karsilama-mesaj { font-size: clamp(1.45rem, 6.2vw, 2.25rem); color: var(--gece-deniz); line-height: 1.42; max-width: 620px; }
 .plak-alan { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.plak { width: 162px; height: 162px; border-radius: 50%; background: repeating-radial-gradient(circle at center, #173e45 0 2px, #24535b 2px 4px); position: relative; cursor: pointer; box-shadow: 0 10px 28px rgba(18,63,72,0.25), inset 0 0 0 6px #12343a; border: 2px solid var(--kagit); transition: transform 0.3s ease; }
+.plak { width: min(162px, 44vw); height: min(162px, 44vw); border-radius: 50%; background: repeating-radial-gradient(circle at center, #173e45 0 2px, #24535b 2px 4px); position: relative; cursor: pointer; box-shadow: 0 10px 28px rgba(18,63,72,0.25), inset 0 0 0 6px #12343a; border: 2px solid var(--kagit); transition: transform 0.3s ease; }
 .plak:hover { transform: scale(1.04); }
 .plak:focus-visible { outline: 3px solid var(--deniz); outline-offset: 6px; }
 .plak.donuyor { animation: plakDon 4s linear infinite; }
@@ -290,7 +357,7 @@ body.kilitli { overflow: hidden; height: 100vh; }
 .rsvp-durum.hata { color: #9b4d3c; }
 
 /* 9) Fotograf */
-.foto > div { max-width: 560px; background: rgba(255,252,246,0.66); border: var(--kart-kenar); border-radius: 12px; padding: 36px 24px; box-shadow: var(--golge); }
+.foto > div { width: min(100%, 560px); max-width: 560px; background: rgba(255,252,246,0.66); border: var(--kart-kenar); border-radius: 12px; padding: 36px 24px; box-shadow: var(--golge); }
 .foto-metin { font-size: clamp(1.15rem, 4.8vw, 1.45rem); color: var(--metin); margin: 8px 0 24px; }
 
 /* 10) Kapanis */
@@ -299,6 +366,22 @@ body.kilitli { overflow: hidden; height: 100vh; }
 .gelin-arabasi { width: clamp(150px, 52vw, 230px); color: var(--deniz); }
 .kapanis-cift { font-size: clamp(1.6rem, 7vw, 2.4rem); color: var(--zeytin); }
 .alt-bilgi { text-align: center; padding: 26px 16px; font-size: 0.95rem; letter-spacing: 1px; color: var(--gece-deniz); border-top: 1px solid rgba(36,121,132,0.18); background: rgba(255,252,246,0.42); }
+
+@media (max-width: 520px) {
+  html, body { width: 100%; overflow-x: hidden; }
+  body { background-attachment: scroll; font-size: 17px; }
+  .bolum { min-height: auto; padding: 58px 18px; justify-content: center; }
+  #kapak, .zarf-ekran { min-height: 100svh; }
+  .kapak-baslik { letter-spacing: 4px; }
+  .kapak-kagit { padding: 34px 22px; }
+  .kapak-isim { font-size: clamp(2.55rem, 15vw, 3.65rem); }
+  .karsilama-mesaj { max-width: 320px; margin-inline: auto; }
+  .aileler { gap: 18px; flex-direction: column; }
+  .aile-ayrac { line-height: 1; }
+  .program-satir { padding: 15px 4px; }
+  .mekan-kart, .rsvp-form, .not-kart { padding-inline: 18px; }
+  .harita-cerceve { aspect-ratio: 4 / 3; }
+}
 
 @media (max-width: 380px) {
   .sayac { gap: 3px; }
@@ -311,3 +394,4 @@ body.kilitli { overflow: hidden; height: 100vh; }
   .bolum { padding: 92px 24px; }
   .aileler { gap: 48px; }
 }
+

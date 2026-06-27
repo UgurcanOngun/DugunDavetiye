@@ -16,7 +16,7 @@ const CONFIG = {
   // Tarayici sekmesi ve WhatsApp/link onizleme metinleri
   siteBaslik: "Bengisu & Uğurcan • Düğün Davetiyesi",
   sosyalBaslik: "Bengisu & Uğurcan Evleniyor!",
-  sosyalAciklama: "11 Temmuz 2026 • Sahildeki düğünümüze bekliyoruz.",
+  sosyalAciklama: "11 Temmuz 2026 • Deniz kenarında bohem bir yaz düğününe davetlisiniz.",
 
   /* --- DÜĞÜN TARİHİ ------------------------------------------------------- */
   // Geri sayımın hedef tarihi. ISO formatı: "YIL-AY-GÜNTSaat:Dakika:Saniye"
@@ -46,7 +46,7 @@ const CONFIG = {
 
   /* --- MÜZİK -------------------------------------------------------------- */
   // Çalmasını istediğin müzik dosyası. Dosyayı "audio/" klasörüne koy.
-  muzikDosyasi: "audio/muzik.mp3",
+  muzikDosyasi: "audio/Ben Varım.mp3",
 
   /* --- PROGRAM AKIŞI ------------------------------------------------------ */
   // İstediğin kadar satır ekleyip çıkarabilirsin.
@@ -362,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
   rsvpKur();
   animasyonlariKur();
 });
+
 
 
 
