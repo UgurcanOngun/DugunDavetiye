@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobil öncelikli: telefonda doğru ölçeklensin -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#1F6F78" />
+  <title>Bengisu & Uğurcan • Düğün Davetiyesi</title>
+
+  <!-- WhatsApp / sosyal medyada link önizlemesi (kendi bilgilerinle güncelle) -->
+  <meta property="og:title" content="Bengisu & Uğurcan Evleniyor!" />
+  <meta property="og:description" content="11 Temmuz 2026 • Sahildeki düğünümüze bekliyoruz." />
+  <!-- <meta property="og:image" content="assets/onizleme.jpg" /> -->
+
+  <!-- Google Fonts: el yazısı (Great Vibes), zarif serif (Playfair / Cormorant) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- =======================================================================
+       1) AÇILIŞ / ZARF EKRANI
+       Tam ekran kaplar. Zarfa tıklayınca açılır ve davetiye görünür.
+  ======================================================================== -->
+  <section id="zarfEkran" class="zarf-ekran">
+    <!-- Köşe dekorları: kendi PNG/WebP görsellerini assets/ klasörüne koyabilirsin. -->
+    <!-- GÖRSEL: sol üst pampas/okaliptüs süsü -> assets/pampas-sol-ust.png -->
+    <img class="kose-cicek sol-ust" src="assets/pampas-sol-ust.png" alt="" onerror="this.style.display='none'">
+    <!-- GÖRSEL: sağ alt deniz kabuğu/yeşillik süsü -> assets/deniz-sag-alt.png -->
+    <img class="kose-cicek sag-alt" src="assets/deniz-sag-alt.png" alt="" onerror="this.style.display='none'">
+
+    <p class="zarf-isim el-yazisi" data-cift-adi>Bengisu &amp; Uğurcan</p>
+
+    <!-- Tıklanabilir zarf (saf CSS ile çizildi, görsel gerekmez) -->
+    <div id="zarf" class="zarf" role="button" tabindex="0" aria-label="Davetiyeyi aç">
+      <div class="zarf-govde">
+        <div class="zarf-kapak"></div>
+        <div class="zarf-on"></div>
+        <!-- Bohem mühür — CSS ile çizildi; istersen assets/deniz-muhru.png ile görsele çevirebilirsin. -->
+        <!-- GÖRSEL (opsiyonel): assets/deniz-muhru.png -->
+        <div class="muhur" data-cift-muhur>B&amp;U</div>
+        <!-- Zarftan çıkacak küçük mektup ucu -->
+        <div class="zarf-mektup"></div>
+      </div>
+    </div>
+
+    <p class="zarf-ipucu">Düğün davetiyesini açmak için tıklayınız</p>
+    <span class="zarf-ok">⌄</span>
+  </section>
+
+
+  <!-- =======================================================================
+       2) KAPAK
+  ======================================================================== -->
+  <section id="kapak" class="bolum kapak">
+    <div class="kose-sus-cerceve">
+      <p class="kapak-ust reveal">Deniz kenarında bir yaz akşamı</p>
+      <h1 class="kapak-baslik reveal">EVLENİYORUZ</h1>
+
+      <!-- Açık zarftan çıkan kağıt -->
+      <div class="kapak-kagit reveal">
+        <!-- GÖRSEL (opsiyonel): yırtık keten/kağıt dokusu -> assets/yirtik-kagit.png arka plan olarak style.css'te -->
+        <p class="kapak-isim el-yazisi" data-cift-adi>Bengisu &amp; Uğurcan</p>
+        <span class="kapak-sus">~</span>
+        <p class="kapak-tarih" id="kapakTarih">11 Temmuz 2026</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       3) KARŞILAMA MESAJI + MÜZİK + AİLELER
+  ======================================================================== -->
+  <section class="bolum karsilama">
+    <p class="karsilama-mesaj el-yazisi-alt reveal">
+      Bu mutlu günümüzde<br>sizleri de aramızda görmek isteriz
+    </p>
+
+    <!-- Plak / vinyl müzik çalar -->
+    <div class="plak-alan reveal">
+      <div id="plak" class="plak" role="button" tabindex="0" aria-label="Müziği çal / durdur">
+        <div class="plak-cizgi c1"></div>
+        <div class="plak-cizgi c2"></div>
+        <div class="plak-cizgi c3"></div>
+        <div class="plak-merkez"></div>
+      </div>
+      <p id="plakYazi" class="plak-yazi">DİNLEMEK İÇİN TIKLA</p>
+    </div>
+
+    <!-- Aile isimleri -->
+    <div class="aileler reveal">
+      <div class="aile">
+        <span class="aile-etiket">Gelin Ailesi</span>
+        <span class="aile-isim el-yazisi-alt" id="gelinAilesi">Elif &amp; Ferit</span>
+      </div>
+      <span class="aile-ayrac">✿</span>
+      <div class="aile">
+        <span class="aile-etiket">Damat Ailesi</span>
+        <span class="aile-isim el-yazisi-alt" id="damatAilesi">Selma &amp; Aydın</span>
+      </div>
+    </div>
+
+    <!-- Gizli audio elementi; kaynağı CONFIG'ten gelir -->
+    <audio id="muzik" loop preload="none">
+      <source id="muzikKaynak" src="" type="audio/mpeg" />
+    </audio>
+  </section>
+
+
+  <!-- =======================================================================
+       4) GERİ SAYIM
+  ======================================================================== -->
+  <section class="bolum geri-sayim">
+    <!-- Deniz/sahil ikonu (inline SVG) -->
+    <svg class="ikon-buyuk reveal" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10 42c6 0 6-4 12-4s6 4 12 4 6-4 12-4 6 4 12 4"/>
+      <path d="M10 50c6 0 6-4 12-4s6 4 12 4 6-4 12-4 6 4 12 4"/>
+      <path d="M34 12l3.2 7 7.6.8-5.6 5.1 1.6 7.5L34 28.6l-6.8 3.8 1.6-7.5-5.6-5.1 7.6-.8L34 12z"/>
+    </svg>
+
+    <h2 class="bolum-baslik reveal">Büyük Güne Kalan Süre</h2>
+
+    <div class="sayac reveal">
+      <div class="sayac-kutu"><span id="gun">00</span><label>GÜN</label></div>
+      <span class="sayac-iki-nokta">:</span>
+      <div class="sayac-kutu"><span id="saat">00</span><label>SAAT</label></div>
+      <span class="sayac-iki-nokta">:</span>
+      <div class="sayac-kutu"><span id="dakika">00</span><label>DAKİKA</label></div>
+      <span class="sayac-iki-nokta">:</span>
+      <div class="sayac-kutu"><span id="saniye">00</span><label>SANİYE</label></div>
+    </div>
+    <p id="geriSayimMesaj" class="geri-sayim-mesaj"></p>
+  </section>
+
+
+  <!-- =======================================================================
+       5) PROGRAM AKIŞI
+  ======================================================================== -->
+  <section class="bolum program">
+    <h2 class="bolum-baslik reveal">Program</h2>
+    <div class="program-cizgi"></div>
+
+    <!-- Program satırları JS tarafından CONFIG.program'dan üretilir -->
+    <div id="programListe" class="program-liste"></div>
+
+    <!-- Dress Code -->
+    <div class="dress-code reveal">
+      <svg class="ikon-kucuk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M3 16c2 0 3-1 5-1s3 2 6 2c2 0 3-1 5-1v3H3v-3z"/>
+        <path d="M5 15V8c0-1 1-2 2-2s2 1 2 2c0 2 1 3 3 3"/>
+      </svg>
+      <span id="dressCode">Dress Code: Formal</span>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       6) TARİH / SAAT / MEKAN KARTI
+  ======================================================================== -->
+  <section class="bolum mekan">
+    <div class="mekan-kart reveal">
+      <!-- GÖRSEL (opsiyonel): yırtık kağıt dokusu kart arkası -> style.css'te .mekan-kart background -->
+
+      <div class="mekan-satir">
+        <!-- Takvim ikonu -->
+        <svg class="ikon-kucuk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="17" rx="2"/>
+          <path d="M3 9h18M8 2v4M16 2v4"/>
+        </svg>
+        <span id="mekanTarih">11.07.2026</span>
+      </div>
+
+      <div class="mekan-satir">
+        <!-- Saat ikonu -->
+        <svg class="ikon-kucuk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+        <span id="mekanSaat">20:00</span>
+      </div>
+
+      <div class="mekan-satir">
+        <!-- Konum ikonu -->
+        <svg class="ikon-kucuk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/>
+          <circle cx="12" cy="10" r="2.5"/>
+        </svg>
+        <span><strong id="mekanAdi">Polis Denizevi Sosyal Tesisleri</strong><br><span id="mekanIlce">Çanakkale / Merkez</span></span>
+      </div>
+
+      <!-- Gömülü Google Maps -->
+      <div class="harita-cerceve">
+        <iframe id="haritaIframe" title="Düğün mekanı haritası" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <a id="haritaLink" class="buton buton-altin" href="#" target="_blank" rel="noopener">
+        Düğün mekanını haritada görmek için tıklayınız
+      </a>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       7) NOT
+  ======================================================================== -->
+  <section class="bolum not-bolum">
+    <div class="not-kart reveal">
+      <!-- Dekoratif sahil notu -->
+      <span class="not-kemer">~ ~ ~</span>
+      <p id="notMetni" class="not-metin">
+        Davetimiz yemekli olup, takı töreni girişte yapılacaktır.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       8) KATILIM BİLDİRİMİ (RSVP)
+  ======================================================================== -->
+  <section class="bolum rsvp">
+    <h2 class="bolum-baslik reveal">Katılım Bildirimi</h2>
+    <p id="rsvpSonTarih" class="rsvp-not reveal">
+      Lütfen katılım durumunuzu <strong>20 MAYIS 2026</strong> tarihine kadar iletiniz.
+    </p>
+
+    <form id="rsvpForm" class="rsvp-form reveal" novalidate>
+      <label class="alan">
+        <span>İsim Soyisim *</span>
+        <input id="rsvpIsim" name="isim" type="text" required placeholder="Adınız Soyadınız" />
+      </label>
+
+      <label class="alan">
+        <span>Katılım Durumu</span>
+        <select id="rsvpKatilim" name="katilim">
+          <option value="Katılacağım">Katılacağım</option>
+          <option value="Katılamayacağım">Katılamayacağım</option>
+        </select>
+      </label>
+
+      <label class="alan">
+        <span>Katılım Sağlayacak Kişi Sayısı *</span>
+        <select id="rsvpKisi" name="kisiSayisi" required>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option>
+          <option value="9">9</option><option value="10">10</option>
+        </select>
+      </label>
+
+      <button type="submit" class="buton buton-altin tam-genislik">GÖNDER</button>
+      <button type="button" id="whatsappButon" class="buton buton-whatsapp tam-genislik">
+        WhatsApp ile Gönder
+      </button>
+
+      <p id="rsvpDurum" class="rsvp-durum" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+
+  <!-- =======================================================================
+       9) FOTOĞRAF PAYLAŞIMI
+  ======================================================================== -->
+  <section class="bolum foto">
+    <div class="reveal">
+      <!-- Kamera ikonu -->
+      <svg class="ikon-buyuk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h0a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/>
+        <circle cx="12" cy="13" r="3.5"/>
+      </svg>
+      <p class="foto-metin">
+        Bu özel günümüzde çekmiş olduğunuz fotoğrafları<br>bize link üzerinden iletebilirsiniz.
+      </p>
+      <a id="fotografLink" class="buton buton-altin" href="#" target="_blank" rel="noopener">
+        Linki açmak için tıklayınız
+      </a>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       10) KAPANIŞ
+  ======================================================================== -->
+  <section class="bolum kapanis">
+    <p class="kapanis-yazi el-yazisi reveal">Teşekkür Ederiz</p>
+
+    <!-- Dekoratif sahil çizimi (inline SVG) -->
+    <svg class="gelin-arabasi reveal" viewBox="0 0 140 82" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 58c10 0 10-6 20-6s10 6 20 6 10-6 20-6 10 6 20 6 10-6 20-6"/>
+      <path d="M24 68c9 0 9-4 18-4s9 4 18 4 9-4 18-4 9 4 18 4 9-4 18-4"/>
+      <path d="M70 12v16"/>
+      <path d="M48 34c6-12 16-18 22-18s16 6 22 18"/>
+      <path d="M42 38h56"/>
+      <path d="M38 48c9-8 18-12 32-12s23 4 32 12"/>
+    </svg>
+
+    <p class="kapanis-cift el-yazisi-alt" data-cift-adi>Bengisu &amp; Uğurcan</p>
+  </section>
+
+  <footer class="alt-bilgi">
+    <span data-cift-adi>Bengisu &amp; Uğurcan</span> • 11.07.2026
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
