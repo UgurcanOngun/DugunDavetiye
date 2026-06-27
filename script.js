@@ -248,8 +248,8 @@ function muzigiKur() {
           yazi.textContent = "ÇALIYOR — DURDURMAK İÇİN TIKLA";
         })
         .catch(() => {
-          // Tarayıcı otomatik oynatmayı engellerse kullanıcıyı bilgilendir
-          yazi.textContent = "Müzik dosyası bulunamadı (audio/ klasörünü kontrol et)";
+          // Sessizce yoksay: ses yüklenirken tekrar tıklanması gibi durumlarda
+          // play() geçici olarak reddedilebilir; kullanıcıya uyarı GÖSTERME.
         });
     } else {
       muzik.pause();
