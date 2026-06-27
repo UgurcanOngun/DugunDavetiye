@@ -52,17 +52,17 @@ const CONFIG = {
   // İstediğin kadar satır ekleyip çıkarabilirsin.
   // "ikon" değeri için kullanılabilir isimler: "kalp", "yemek", "pasta", "muzik"
   program: [
-    { ikon: "kalp",  baslik: "Karşılama & Takı Merasimi", saat: "20.00" },
-    { ikon: "yemek", baslik: "Yemek Servisi",             saat: "21.00" },
+    { ikon: "kalp",  baslik: "Karşılama ", saat: "20.00" },
+    { ikon: "yemek", baslik: "Çerez ve İçecek Servisi",             saat: "21.00" },
     { ikon: "pasta", baslik: "Pasta Kesimi",              saat: "22.30" },
   ],
   dressCode: "Sahil Şıklığı",
 
   /* --- NOT BÖLÜMÜ --------------------------------------------------------- */
-  notMetni: "Davetimiz sahil oteli atmosferinde gerçekleşecektir. Takı töreni düğün alanında yapılacaktır.",
+  notMetni: "Davetimiz kır düğün atmosferinde gerçekleşecektir. Takı töreni düğün alanında yapılacaktır.",
 
   /* --- RSVP (KATILIM BİLDİRİMİ) ------------------------------------------ */
-  rsvpSonTarih: "4 Temmuz 2026",
+  rsvpSonTarih: "7 Temmuz 2026",
 
   // SEÇENEK A — FORMSPREE (forma yazılanlar e-postana düşer):
   //   1) https://formspree.io adresine ücretsiz üye ol.
@@ -77,7 +77,7 @@ const CONFIG = {
 
   /* --- FOTOĞRAF PAYLAŞIMI ------------------------------------------------- */
   // Misafirlerin fotoğraf yükleyeceği Google Drive / Google Photos klasör linki.
-  fotografLinki: "https://drive.google.com/drive/folders/SENIN_KLASOR_LINKIN",
+  fotografLinki: "https://drive.google.com/drive/folders/1JWCfZNckyPTqz9HMVUd2qmhdbX5wDZPU?usp=sharing",
 
 };
 
