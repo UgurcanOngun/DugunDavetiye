@@ -33,6 +33,8 @@
   --img-deniz: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80");
   --img-dugun: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80");
   --img-bohem: url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80");
+  /* Giriş (EVLENİYORUZ) bölümündeki ana çift fotoğrafı — assets/ klasöründeki yerel görsel */
+  --img-giris: url("assets/giris-foto.jpg");
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -229,10 +231,13 @@ body.kilitli { overflow: hidden; height: 100vh; }
   box-shadow: var(--golge);
 }
 .kapak-foto {
-  aspect-ratio: 4 / 3;
+  /* Dikey çekilmiş çift fotoğrafı için portre oranı */
+  aspect-ratio: 3 / 4;
+  width: min(100%, 360px);
   border-radius: 28px 28px 10px 10px;
   margin: 0 auto 18px;
-  background-image: linear-gradient(180deg, rgba(36,121,132,0.02), rgba(18,63,72,0.12)), var(--img-dugun);
+  background-position: center 30%;
+  background-image: linear-gradient(180deg, rgba(36,121,132,0.02), rgba(18,63,72,0.10)), var(--img-giris);
 }
 .sahil-foto-karti {
   width: min(100%, 430px);
