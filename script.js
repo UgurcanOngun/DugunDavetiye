@@ -35,7 +35,9 @@ const CONFIG = {
   // Google Maps gömülü harita (iframe) embed linki.
   // NASIL ALINIR: Google Maps'te mekanı bul -> Paylaş -> "Harita yerleştir" (Embed a map)
   // -> oradaki <iframe src="..."> içindeki src adresini aşağıya yapıştır.
-  haritaEmbedUrl: "https://www.google.com/maps?q=Polis%20Denizevi%20Sosyal%20Tesisleri%20%C3%87anakkale&output=embed",
+  // NOT: "Harita yerleştir" formundaki /maps/embed?pb=... adresi kullanılır;
+  // basit ?q=...&output=embed formu Türkiye/AB'de çerez onayı yüzünden boş kalabilir.
+  haritaEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d26.410079!3d40.11889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b1a9f85a654747%3A0x32d6ef1467a966ce!2sPolis%20Denizevi%20Sosyal%20Tesisleri!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str",
 
   // "Haritada görmek için tıklayınız" linkinin gideceği normal Google Maps adresi.
   haritaLinki: "https://www.google.com/maps/place/Polis+Denizevi+Sosyal+Tesisleri/@40.11889,26.410079,802m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14b1a9f85a654747:0x32d6ef1467a966ce!8m2!3d40.11889!4d26.410079!16s%2Fg%2F11g6nyy6g9?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D",
@@ -46,7 +48,7 @@ const CONFIG = {
 
   /* --- MÜZİK -------------------------------------------------------------- */
   // Çalmasını istediğin müzik dosyası. Dosyayı "audio/" klasörüne koy.
-  muzikDosyasi: "audio/Ben Varım.mp3",
+  muzikDosyasi: "audio/ben-varim.mp3",
 
   /* --- PROGRAM AKIŞI ------------------------------------------------------ */
   // İstediğin kadar satır ekleyip çıkarabilirsin.
@@ -237,6 +239,9 @@ function muzigiKur() {
 
   plak.addEventListener("click", () => {
     if (muzik.paused) {
+      // iOS/Safari: <source> src'si JS ile sonradan atandığında, load() çağrılmazsa
+      // ses elemanı kaynağı seçemez ve play() reddedilir. İlk tıklamada yükle.
+      if (muzik.readyState === 0) muzik.load();
       muzik.play()
         .then(() => {
           plak.classList.add("donuyor");
